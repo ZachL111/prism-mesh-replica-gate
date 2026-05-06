@@ -1,0 +1,73 @@
+{
+  "repo": "prism-mesh-replica-gate",
+  "language": "SQL",
+  "category": "Distributed systems",
+  "goal": "Implement an SQL distributed systems project for replica event replay, using fixture event logs and golden state snapshots.",
+  "review_model": {
+    "terms": [
+      "quorum health",
+      "lease drift",
+      "replica lag",
+      "membership churn"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "quorum health",
+      "signal": 63,
+      "slack": 38,
+      "drag": 26,
+      "confidence": 80,
+      "score": 166,
+      "lane": "ship"
+    },
+    {
+      "name": "stress",
+      "focus": "lease drift",
+      "signal": 51,
+      "slack": 27,
+      "drag": 28,
+      "confidence": 53,
+      "score": 98,
+      "lane": "hold"
+    },
+    {
+      "name": "edge",
+      "focus": "replica lag",
+      "signal": 77,
+      "slack": 51,
+      "drag": 10,
+      "confidence": 47,
+      "score": 222,
+      "lane": "ship"
+    },
+    {
+      "name": "recovery",
+      "focus": "membership churn",
+      "signal": 83,
+      "slack": 28,
+      "drag": 31,
+      "confidence": 83,
+      "score": 184,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "quorum health",
+      "signal": 92,
+      "slack": 53,
+      "drag": 32,
+      "confidence": 92,
+      "score": 233,
+      "lane": "ship"
+    }
+  ]
+}
