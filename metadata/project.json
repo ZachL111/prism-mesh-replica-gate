@@ -1,0 +1,32 @@
+{
+  "index": 478,
+  "phase": 2,
+  "batch": 54,
+  "name": "prism-mesh-replica-gate",
+  "planned_name": "prism-mesh-replica-gate",
+  "language": "SQL",
+  "category": "Distributed systems",
+  "goal": "Implement an SQL distributed systems project for replica event replay, using fixture event logs and golden state snapshots.",
+  "repository_url": "https://github.com/ZachL111/prism-mesh-replica-gate",
+  "verification_command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1",
+  "model": {
+    "inputs": [
+      "demand",
+      "capacity",
+      "latency",
+      "risk",
+      "weight"
+    ],
+    "threshold": 170,
+    "risk_penalty": 6,
+    "latency_penalty": 3,
+    "weight_bonus": 6,
+    "decision_rule": "accept when score is greater than or equal to threshold, otherwise review"
+  },
+  "quality_gates": [
+    "readme constraint scan",
+    "fixture presence check",
+    "metadata JSON parse",
+    "language verifier"
+  ]
+}
